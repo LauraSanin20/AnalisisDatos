@@ -2,25 +2,24 @@
 import pandas as pd
 from bs4 import BeautifulSoup
 
-def crearTabla(dataFrame,nombreHTML):
+def crearTabla(dataFrame,nombreTabla):
 
     # Obtener una tabla de HTML desde un DataFrame de python
-    archivoHTML=dataFrame.to_html()
+     archivoHTML=dataFrame.to_html()
 
     # Definir la ruta donde se va a guardar esa tabla
-    rutaArchivo=f"tables/{nombreHTML}.html"
+     rutaArchivo=f"tables/{nombreTabla}.html"
 
     # Construir un encabezado <head> del archivo generado
-    encabezadoHTML='''
+    encabezadoHTML=''' 
         <!DOCTYPE html>
-        <html lang="en">
+        <html>
             <head>
                 <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>tablas</title>
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-                <title>Document</title>
             </head>
-            <body>
+        </html>
     '''
 
     # Utilizo BS4 para optimizar mi tabla
@@ -33,7 +32,7 @@ def crearTabla(dataFrame,nombreHTML):
     archivoHTML=str(sopa)
 
     # Agregar la clase table y table striped de bootstrap
-    archivoHTML=archivoHTML.replace('<table border="1" class="dataFrame">','<table class="table table-striped">')
+    archivoHTML=archivoHTML.replace('<table border="1" class="dataframe">','<table class="table table-striped">')
 
     # Escribir la tabla y generarla en el proyecto
     with open(rutaArchivo,"w") as archivo:
