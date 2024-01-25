@@ -2,12 +2,15 @@
 # 1. Importar el paquete  p paquetes con los que voy a analizar la información
 
 import pandas as pd
+from helpers.creacionTabla import crearTabla
 
 def analizarCanastaBasica():
     # 2. Sin importar la fuente (sql, xls, JSON, csv...)
     # Crear una tabla tabulada que se llama DATAFRAME
 
     tabla=pd.read_csv('./data/bdcanasta.csv')
+
+    crearTabla(tabla,"canastabasica")
 
     #print(tabla)
 
@@ -19,4 +22,4 @@ def analizarCanastaBasica():
 
     #print(tabla.tail()) # imprime los ultimos 5 registros
 
-    print(tabla.describe()) # Informacion basica descriptiva de todos los datos
+    #print(tabla.describe()) # Informacion basica descriptiva de todos los datos
