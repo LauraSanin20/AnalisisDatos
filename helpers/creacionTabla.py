@@ -5,10 +5,10 @@ from bs4 import BeautifulSoup
 def crearTabla(dataFrame,nombreTabla):
 
     # Obtener una tabla de HTML desde un DataFrame de python
-     archivoHTML=dataFrame.to_html()
+    archivoHTML=dataFrame.to_html()
 
     # Definir la ruta donde se va a guardar esa tabla
-     rutaArchivo=f"tables/{nombreTabla}.html"
+    rutaArchivo=f"tables/{nombreTabla}.html"
 
     # Construir un encabezado <head> del archivo generado
     encabezadoHTML=''' 
@@ -35,5 +35,5 @@ def crearTabla(dataFrame,nombreTabla):
     archivoHTML=archivoHTML.replace('<table border="1" class="dataframe">','<table class="table table-striped">')
 
     # Escribir la tabla y generarla en el proyecto
-    with open(rutaArchivo,"w") as archivo:
+    with open(rutaArchivo,"w",encoding='utf-8') as archivo:
         archivo.write(f"{encabezadoHTML}\n{archivoHTML}\n</body>\n</html>")
